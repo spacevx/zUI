@@ -25,27 +25,28 @@ jobs:
       with:
         node-version: '18'
         cache: 'pnpm'
-        cache-dependency-path: zUI/web/pnpm-lock.yaml
+        cache-dependency-path: zUI/web/pnpm-lock.yaml  # Modifié ici
 
     - name: Install dependencies
       run: |
-        cd web
+        cd zUI/web  # Modifié ici
         pnpm install
 
     - name: Build
       run: |
-        cd web
+        cd zUI/web  # Modifié ici
         pnpm build
 
     - name: Move build files
       run: |
-        rm -rf web/build
-        mv web/dist web/build
+        rm -rf zUI/web/build  # Modifié ici
+        mv zUI/web/dist zUI/web/build  # Modifié ici
 
     - name: Create Release Artifact
       if: github.event_name == 'release'
       run: |
-        zip -r zUI.zip ./* \
+        cd zUI  # Ajouté ici
+        zip -r ../zUI.zip ./* \
           -x "web/node_modules/*" \
           -x "web/src/*" \
           -x ".git/*" \
@@ -54,6 +55,7 @@ jobs:
           -x "web/pnpm-lock.yaml" \
           -x "web/vite.config.js" \
           -x "web/.gitignore"
+        cd ..  # Retour au dossier parent
 
     - name: Upload Release Asset
       if: github.event_name == 'release'
@@ -71,6 +73,6 @@ jobs:
       run: |
         git config --global user.name 'GitHub Actions'
         git config --global user.email 'actions@github.com'
-        git add web/build
+        git add zUI/web/build  # Modifié ici
         git commit -m "chore: update build files [skip ci]" || echo "No changes to commit"
         git push
