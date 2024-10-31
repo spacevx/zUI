@@ -37,8 +37,6 @@ jobs:
         cd zUI/web
         pnpm build
 
-    # Supprimé l'étape "Move build files" car inutile maintenant
-
     - name: Create Release Artifact
       if: github.event_name == 'release'
       run: |
@@ -70,6 +68,6 @@ jobs:
       run: |
         git config --global user.name 'GitHub Actions'
         git config --global user.email 'actions@github.com'
-        git add zUI/web/build
+        git add -f zUI/web/build  # Ajout du flag -f pour forcer
         git commit -m "chore: update build files [skip ci]" || echo "No changes to commit"
         git push
