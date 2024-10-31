@@ -22,7 +22,7 @@ RegisterNUICallback("zUI-UseButton", function(ActionId, cb)
         ActionData.action(true, true)
     end
     if ActionData.submenu then
-        Citizen.Wait(10)
+        Wait(0)
         ActionData.parent.priority = false
         ActionData.submenu.priority = true
         UpdateItems(ActionData.submenu)

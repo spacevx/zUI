@@ -1,8 +1,8 @@
 function MenuControls(Menu)
-    Citizen.CreateThread(function()
+    CreateThread(function()
         local Delay = 0
         while Menu.priority do
-            Citizen.Wait(Delay)
+            Wait(Delay)
             if IsControlPressed(2, 172) then -- Arrow UP
                 Delay = 125
                 SendNUIMessage({

@@ -24,7 +24,7 @@ function zUI.AlertInput(Title, Subtitle, Description)
         promise:resolve(NuiResponse)
         cb('ok')
     end)
-    Citizen.Wait(0)
+    Wait(0)
     local response = Citizen.Await(promise)
     SetNuiFocus(false, false)
     return response

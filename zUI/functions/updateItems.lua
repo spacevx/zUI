@@ -1,7 +1,7 @@
 function UpdateItems(Menu)
-    Citizen.CreateThread(function()
+    CreateThread(function()
         while Menu.priority do
-            Citizen.Wait(75)
+            Wait(0)
             if not IsPauseMenuActive() then
                 Menu.items = {}
                 Menu.itemsManager(Menu)

@@ -4,6 +4,7 @@
 ---@field subtitle string | nil @Sous-titre du menu.
 ---@field banner string | nil @Lien direct vers la bannière du menu.
 ---@field key string | nil @Touche sur laquelle appuyer pour ouvrir le menu.
+---@field keyType string | keyboard @Mapper ID  (keyboard, manette etcc).
 ---@field description string | nil @Description à afficher dans les paramètres.
 ---@field itemsManager fun() | nil @Function pour définir les items.
 ---@field items table @Items visible dans le menu.
@@ -23,8 +24,9 @@ Menus = {}
 ---@param Subtitle string | nil @Sous-titre du menu.
 ---@param Banner string | nil @Lien direct vers la bannière du menu.
 ---@param Key string | nil @Touche sur laquelle appuyer pour ouvrir le menu.
+---@param KeyType string | keyboard @Mapper ID  (keyboard, manette etcc).
 ---@param Description string | nil @Description à afficher dans les paramètres.
-function zUI.CreateMenu(Title, Subtitle, Banner, Key, Description)
+function zUI.CreateMenu(Title, Subtitle, Banner, Key, KeyType, Description)
     local MenuId = #Menus + 1
     ---@type zUI
     local self = setmetatable({}, zUI)
@@ -33,6 +35,7 @@ function zUI.CreateMenu(Title, Subtitle, Banner, Key, Description)
     self.subtitle = Subtitle or ""
     self.banner = Banner or ""
     self.key = Key or ""
+    self.keyType = KeyType or "keyboard"
     self.description = Description or ""
     self.items = {}
     self.itemsManager = nil

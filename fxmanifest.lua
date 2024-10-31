@@ -1,7 +1,8 @@
 fx_version "cerulean"
 game "gta5"
 lua54 "yes"
-
+use_experimental_fxv2_oal 'yes'
+nui_callback_strict_mode 'true'
 author "zSquad - Soren & Jules"
 description "zUI est une bibliothèque avancée pour créer des menus NUI dans FiveM, alliant sobriété, optimisation et esthétique. Basée sur React pour l'interface et Lua pour les scripts, elle modernise et simplifie la création de menus, s'inspirant de RageUI tout en améliorant l'expérience utilisateur."
 version "1.0.5"
