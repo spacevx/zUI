@@ -21,4 +21,3 @@ build
 *.njsproj
 *.sln
 *.sw?
-pnpm-lock.yaml
