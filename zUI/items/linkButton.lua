@@ -10,5 +10,5 @@ function zUI:AddLinkButton(Title, Description, Styles, Link)
     Item.description = Description or ""
     Item.styles = Styles
     Item.link = Link
-    table.insert(self.items, Item)
+    self.items[#self.items+1] = Item
 end

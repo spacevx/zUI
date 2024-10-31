@@ -13,7 +13,7 @@ function zUI:AddCheckbox(Title, Description, State, Styles, Action)
     Item.state = State
     Item.styles = Styles
     Item.actionId = ActionId
-    table.insert(self.items, Item)
+    self.items[#self.items+1] = Item
     ItemsData[ActionId] = { action = Action }
 end
 

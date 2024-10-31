@@ -13,7 +13,7 @@ function zUI:AddList(Title, Description, Items, Styles, Action)
     Item.items = Items
     Item.styles = Styles
     Item.actionId = ActionId
-    table.insert(self.items, Item)
+    self.items[#self.items+1] = Item
     ItemsData[ActionId] = { action = Action }
 end
 

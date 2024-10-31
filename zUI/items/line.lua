@@ -4,5 +4,5 @@ function zUI:AddLine(Colors)
     local Item = {}
     Item.type = "line"
     Item.colors = Colors
-    table.insert(self.items, Item)
+    self.items[#self.items+1] = Item
 end

@@ -6,7 +6,7 @@ function zUI:AddSeparator(Title, Position)
     Item.type = "separator"
     Item.title = Title
     Item.position = Position or "center"
-    table.insert(self.items, Item)
+    self.items[#self.items+1] = Item
 end
 
 ---@alias Position

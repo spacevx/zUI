@@ -1,13 +1,15 @@
+local VERSION_CHECKER = true
+
 local function CheckVersion(repo)
     local ressource = GetInvokingResource() or GetCurrentResourceName()
 
-    local versionActuelle = GetResourceMetadata(ressource, 'version', 0)
+    local actualVersion = GetResourceMetadata(ressource, 'version', 0)
 
-    if versionActuelle then
-        versionActuelle = versionActuelle:match('%d+%.%d+%.%d+')
+    if actualVersion then
+        actualVersion = actualVersion:match('%d+%.%d+%.%d+')
     end
 
-    if not versionActuelle then
+    if not actualVersion then
         return print(("^1Impossible de récupérer la version pour '%s' ^0"):format(ressource))
     end
 
@@ -20,9 +22,9 @@ local function CheckVersion(repo)
                 if data.prerelease then return end
 
                 local versionDisponible = data.tag_name:match('%d+%.%d+%.%d+')
-                if not versionDisponible or versionDisponible == versionActuelle then return end
+                if not versionDisponible or versionDisponible == actualVersion then return end
 
-                local va = { string.strsplit('.', versionActuelle) }
+                local va = { string.strsplit('.', actualVersion) }
                 local vd = { string.strsplit('.', versionDisponible) }
 
                 for i = 1, #va do
@@ -31,7 +33,7 @@ local function CheckVersion(repo)
                     if actuelle ~= dispo then
                         if actuelle < dispo then
                             return print(('^3Nouvelle version disponible pour %s (version actuelle: %s)\r\n%s^0')
-                                :format(ressource, versionActuelle, data.html_url))
+                                :format(ressource, actualVersion, data.html_url))
                         else
                             break
                         end

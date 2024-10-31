@@ -12,7 +12,7 @@ function zUI:AddButton(Title, Description, Styles, Action, Submenu)
     Item.description = Description or ""
     Item.styles = Styles
     Item.actionId = ActionId
-    table.insert(self.items, Item)
+    self.items[#self.items+1] = Item
     ItemsData[ActionId] = { action = Action, parent = self, submenu = Submenu }
 end
 
